@@ -1,35 +1,35 @@
 pipeline {
-	agent any
-	stages {
-	stage('Pre start') {
-	steps {
-	echo 'To start the execution'
-	}
-	}
-	stage('Build') {
-	steps {
-	input('Do you want to proceed?')
-	}
-	}
-	stage('Execution') {
-	when {
-	not {
-	branch "master"
-	}
-	}
-	steps {
-	echo "Process Started"
-	}
-	}
-	Stage('Final') {
-	parallel {
-	stage('Unit Test') {
-	steps {
-	echo "Running the execution...."
-	}
-	}
-	}
-	}
-	}
-	}
+	 agent any
+	 stages {
+	 stage('Pre start') {
+	 steps {
+	 echo 'To start the execution'
+	 }
+	 }
+	 stage('Build') {
+	 steps {
+	 input('Do you want to proceed?')
+	 }
+	 }
+	 stage('Execution') {
+	 when {
+	 not {
+	 branch "master"
+	 }
+	 }
+	 steps {
+	 echo "Process Started"
+	 }
+	 }
+	 Stage('Final') {
+	 parallel {
+	 stage('Unit Test') {
+	 steps {
+	 echo "Running the execution...."
+	 }
+	 }
+	 }
+	 }
+	 }
+	 }
 	
